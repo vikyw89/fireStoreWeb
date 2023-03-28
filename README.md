@@ -4,9 +4,9 @@ an intuitive wrapper for firestore web CRUD, with a built in date_created, date_
 ## To start :
 - set the config on the root of your project
 ```jsx
-firebaseConfig = {
+setFirebaseConfig({
     //TODO: put config file here
-}
+})
 ```
 
 ## To use :
