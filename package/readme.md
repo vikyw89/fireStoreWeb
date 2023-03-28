@@ -2,11 +2,15 @@
 an intuitive wrapper for firestore web CRUD, with a built in date_created, date_updated, and doc_id field stamp
 
 ## To start :
-- set the config on the root of your project
+- set the config on the .env of your NEXT project
+
 ```jsx
-setFirebaseConfig({
-    //TODO: put config file here
-})
+NEXT_PUBLIC_FIREBASE_WEB_API_KEY=
+NEXT_PUBLIC_FIREBASE_WEB_AUTHDOMAIN=
+NEXT_PUBLIC_FIREBASE_WEB_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_WEB_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_WEB_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_WEB_APP_ID=
 ```
 
 ## To use :
