@@ -1,12 +1,14 @@
 {
   "name": "firestore-web-wrapper",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "description": "an intuitive wrapper for firestore web CRUD, with a built in date_created, date_updated stamp",
-  "main": "index.js",
+  "main": "/dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx tsc --watch"
   },
+  "exports": "./dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vikyw89/fireStoreWeb.git"
@@ -27,6 +29,10 @@
   },
   "homepage": "https://github.com/vikyw89/fireStoreWeb#readme",
   "dependencies": {
-    "firebase": "^9.18.0"
+    "firebase": "^10.3.1"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.2",
+    "typescript": "^5.2.2"
   }
 }
