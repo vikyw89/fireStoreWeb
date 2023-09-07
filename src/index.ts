@@ -14,8 +14,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
-import { FIRESTORE_CONFIG } from "./config";
-
+import { FIRESTORE_CONFIG } from "./config.js";
 
 export class FirestoreWeb {
   // initialize firebase config

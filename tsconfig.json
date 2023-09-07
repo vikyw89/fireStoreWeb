@@ -2,5 +2,5 @@
   "compilerOptions": {
     "outDir": "./dist"
   },
-  "extends": ["@tsconfig/recommended/tsconfig.json"]
+  "extends": ["@tsconfig/node-lts/tsconfig.json"]
 }
