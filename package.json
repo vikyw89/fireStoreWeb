@@ -1,6 +1,6 @@
 {
   "name": "firestore-web-wrapper",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "type": "module",
   "description": "an intuitive wrapper for firestore web CRUD, with a built in date_created, date_updated stamp",
   "main": "./dist/index.js",
