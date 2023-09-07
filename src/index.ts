@@ -1,5 +1,8 @@
 import {
+  DocumentData,
+  DocumentSnapshot,
   QueryConstraint,
+  QuerySnapshot,
   collection,
   collectionGroup,
   deleteDoc,
@@ -153,7 +156,7 @@ export class FirestoreWeb {
   }
 
 
-  static subscribeDoc = async (docPath: string, callback: () => any) => {
+  static subscribeDoc = async (docPath: string, callback: (snapshot:DocumentSnapshot<any>) => void) => {
     if (!this.isDocPath(docPath)) return;
     // Get a reference to the document and subscribe to changes.
     const docRef = doc(this.db, docPath);
@@ -164,7 +167,7 @@ export class FirestoreWeb {
   }
 
 
-  static subscribeColGroup = async (colGroupId: string, callback: () => any, ...queryDef: Array<QueryConstraint>) => {
+  static subscribeColGroup = async (colGroupId: string, callback: (snapshot:QuerySnapshot<DocumentData, DocumentData>) => void, ...queryDef: Array<QueryConstraint>) => {
     if (this.pathSegmentCounter(colGroupId) !== 1) return;
     const colGroupRef = collectionGroup(this.db, colGroupId);
     const q = query(colGroupRef, ...queryDef);
