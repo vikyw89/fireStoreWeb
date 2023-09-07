@@ -17,7 +17,7 @@ import { initializeApp } from "firebase/app";
 import { FIRESTORE_CONFIG } from "./config";
 
 
-export class Firestore {
+export class FirestoreWeb {
   // initialize firebase config
   static get db() {
     return getFirestore(initializeApp(FIRESTORE_CONFIG));

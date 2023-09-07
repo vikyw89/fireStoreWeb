@@ -10,36 +10,36 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Firestore = void 0;
+exports.FirestoreWeb = void 0;
 const firestore_1 = require("firebase/firestore");
 const app_1 = require("firebase/app");
 const config_1 = require("./config");
-class Firestore {
+class FirestoreWeb {
     // initialize firebase config
     static get db() {
         return (0, firestore_1.getFirestore)((0, app_1.initializeApp)(config_1.FIRESTORE_CONFIG));
     }
 }
-exports.Firestore = Firestore;
-_a = Firestore;
-Firestore.pathSegmentCounter = (path) => {
+exports.FirestoreWeb = FirestoreWeb;
+_a = FirestoreWeb;
+FirestoreWeb.pathSegmentCounter = (path) => {
     var _b;
     const segmentCount = ((_b = path.match(new RegExp(String.raw `(?<segment>[^/]+)`, "gi"))) !== null && _b !== void 0 ? _b : []).length;
     return segmentCount;
 };
-Firestore.isColPath = (path) => {
+FirestoreWeb.isColPath = (path) => {
     const pathSegmentCount = _a.pathSegmentCounter(path);
     if (pathSegmentCount === 0)
         return false;
     return pathSegmentCount % 2 === 1;
 };
-Firestore.isDocPath = (path) => {
+FirestoreWeb.isDocPath = (path) => {
     const pathSegmentCount = _a.pathSegmentCounter(path);
     if (pathSegmentCount === 0)
         return false;
     return pathSegmentCount % 2 === 0;
 };
-Firestore.createDoc = (path, data) => __awaiter(void 0, void 0, void 0, function* () {
+FirestoreWeb.createDoc = (path, data) => __awaiter(void 0, void 0, void 0, function* () {
     switch (true) {
         case _a.isDocPath(path): {
             const docRef = (0, firestore_1.doc)(_a.db, path);
@@ -58,7 +58,7 @@ Firestore.createDoc = (path, data) => __awaiter(void 0, void 0, void 0, function
         }
     }
 });
-Firestore.readDoc = (docPath) => __awaiter(void 0, void 0, void 0, function* () {
+FirestoreWeb.readDoc = (docPath) => __awaiter(void 0, void 0, void 0, function* () {
     if (!_a.isDocPath(docPath))
         return;
     // Get a reference to the document.
@@ -68,7 +68,7 @@ Firestore.readDoc = (docPath) => __awaiter(void 0, void 0, void 0, function* () 
     const data = response.data();
     return data;
 });
-Firestore.updateDoc = (docPath, data) => __awaiter(void 0, void 0, void 0, function* () {
+FirestoreWeb.updateDoc = (docPath, data) => __awaiter(void 0, void 0, void 0, function* () {
     if (!_a.isDocPath(docPath))
         return;
     // Get a reference to the document and update it with the given data.
@@ -77,7 +77,7 @@ Firestore.updateDoc = (docPath, data) => __awaiter(void 0, void 0, void 0, funct
     // Return the Firestore response object.
     return response;
 });
-Firestore.deleteDoc = (docPath) => __awaiter(void 0, void 0, void 0, function* () {
+FirestoreWeb.deleteDoc = (docPath) => __awaiter(void 0, void 0, void 0, function* () {
     if (!_a.isDocPath(docPath))
         return;
     // Get a reference to the document and delete it.
@@ -86,7 +86,7 @@ Firestore.deleteDoc = (docPath) => __awaiter(void 0, void 0, void 0, function* (
     // Return the Firestore response object.
     return response;
 });
-Firestore.readCol = (colPath, ...queryDef) => __awaiter(void 0, void 0, void 0, function* () {
+FirestoreWeb.readCol = (colPath, ...queryDef) => __awaiter(void 0, void 0, void 0, function* () {
     if (!_a.isColPath(colPath))
         return;
     // Get a reference to the collection and apply the query definition.
@@ -100,7 +100,7 @@ Firestore.readCol = (colPath, ...queryDef) => __awaiter(void 0, void 0, void 0, 
     });
     return data;
 });
-Firestore.readColGroup = (colGroupId, ...queryDef) => __awaiter(void 0, void 0, void 0, function* () {
+FirestoreWeb.readColGroup = (colGroupId, ...queryDef) => __awaiter(void 0, void 0, void 0, function* () {
     if (_a.pathSegmentCounter(colGroupId) !== 1)
         return;
     // Get a reference to the collection group and apply the query definition.
@@ -114,7 +114,7 @@ Firestore.readColGroup = (colGroupId, ...queryDef) => __awaiter(void 0, void 0, 
     });
     return data;
 });
-Firestore.subscribeDoc = (docPath, callback) => __awaiter(void 0, void 0, void 0, function* () {
+FirestoreWeb.subscribeDoc = (docPath, callback) => __awaiter(void 0, void 0, void 0, function* () {
     if (!_a.isDocPath(docPath))
         return;
     // Get a reference to the document and subscribe to changes.
@@ -123,7 +123,7 @@ Firestore.subscribeDoc = (docPath, callback) => __awaiter(void 0, void 0, void 0
     // Return the function to unsubscribe from the Firestore document.
     return unsubscribe;
 });
-Firestore.subscribeColGroup = (colGroupId, callback, ...queryDef) => __awaiter(void 0, void 0, void 0, function* () {
+FirestoreWeb.subscribeColGroup = (colGroupId, callback, ...queryDef) => __awaiter(void 0, void 0, void 0, function* () {
     if (_a.pathSegmentCounter(colGroupId) !== 1)
         return;
     const colGroupRef = (0, firestore_1.collectionGroup)(_a.db, colGroupId);
